@@ -164,7 +164,8 @@ export default function SingleCanvasInstance({
   return (
     <div
       onClick={onClick}
-      className={`relative flex-shrink-0 rounded-2xl bg-white p-3 shadow-premium border transition-all duration-200 ${
+      style={{ touchAction: 'pan-x' }}
+      className={`relative flex-shrink-0 rounded-2xl bg-white p-3 shadow-premium border transition-all duration-200 touch-pan-x ${
         isActive
           ? 'ring-4 ring-blue-500/40 border-blue-500'
           : 'border-slate-200/60 hover:shadow-xl'
@@ -186,7 +187,7 @@ export default function SingleCanvasInstance({
         )}
 
         <Stage ref={stageRef} width={1242 * scale} height={2688 * scale} scaleX={scale} scaleY={scale} preventDefault={false} style={{ touchAction: 'pan-x' }}>
-          <Layer>
+          <Layer listening={false}>
             <Rect 
               key={screen.backgroundColor}
               x={0} y={0} width={1242} height={2688}

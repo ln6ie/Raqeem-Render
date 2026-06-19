@@ -55,14 +55,15 @@ export default function TopFloatingDashboard({
       {/* اليمين: اللوجو والتصدير */}
       <div className="flex items-center justify-between gap-3 border-b border-slate-100/60 pb-2 md:border-b-0 md:pb-0 md:justify-start">
         <div className="flex items-center gap-2 md:border-l md:border-slate-200/80 md:pl-3">
-          <Link href="/" className="transition-transform hover:scale-105">
+          <Link href="/" className="flex items-center gap-1.5 transition-transform hover:scale-105">
             <RaqeemLogo size={28} />
+            <span className="text-xs font-black tracking-tight text-slate-900 font-sans whitespace-nowrap md:hidden">Raqeem Render</span>
           </Link>
         </div>
         <button
           type="button"
           onClick={onExportAll}
-          className="flex items-center gap-1 rounded-lg bg-slate-950 px-2.5 py-1.5 text-[10px] font-medium text-white transition-all hover:bg-slate-800 shadow-sm md:rounded-xl md:px-3 md:text-xs"
+          className="flex items-center gap-1 rounded-full bg-[#007AFF] px-3.5 py-1.5 text-[10px] font-semibold text-white transition-all hover:bg-[#0066D6] shadow-md shadow-blue-500/20 md:px-5 md:py-2 md:text-xs"
         >
           <Download className="h-3 w-3 md:h-3.5 md:w-3.5" />
           <span>تصدير</span>
@@ -73,14 +74,14 @@ export default function TopFloatingDashboard({
       <div className="flex items-center gap-4 overflow-x-auto overflow-y-hidden py-1 scrollbar-none md:overflow-visible md:py-0 md:gap-6 touch-pan-x">
         {/* اختيار القالب */}
         <div className="flex flex-shrink-0 items-center gap-1.5">
-          <span className="text-[9px] font-bold text-slate-400 md:text-[10px]">المظهر</span>
+          <span className="text-[9px] font-bold text-slate-900 md:text-[10px]">المظهر</span>
           <select
             value={project.activeThemeId || ''}
             onChange={(e) => {
               const theme = PANORAMIC_THEMES.find(t => t.id === e.target.value)
               if (theme) onChange(applyTheme(project, theme))
             }}
-            className="rounded-lg border border-slate-200 bg-slate-50/50 px-1.5 py-1 text-[9px] font-semibold text-slate-700 focus:outline-none focus:ring-1 focus:ring-slate-300 cursor-pointer md:px-2 md:text-[10px]"
+            className="rounded-full border border-slate-200 bg-slate-50/50 px-2 py-1 text-[9px] font-semibold text-slate-900 focus:outline-none focus:ring-1 focus:ring-slate-300 cursor-pointer md:px-3 md:text-[10px]"
           >
             <option value="" disabled>اختر قالباً...</option>
             {PANORAMIC_THEMES.map(t => (
@@ -93,7 +94,7 @@ export default function TopFloatingDashboard({
           <div className="flex flex-shrink-0 items-center gap-4 border-r border-slate-100 pr-4 md:gap-6 md:pr-6">
             {/* تخصيص خلفية الشاشة النشطة */}
             <div className="flex items-center gap-1.5">
-              <span className="text-[9px] font-bold text-slate-400 md:text-[10px]">الخلفية</span>
+              <span className="text-[9px] font-bold text-slate-900 md:text-[10px]">الخلفية</span>
               <div className="flex items-center gap-1">
                 {PRESET_GRADIENTS.map((grad, i) => (
                   <button
@@ -107,7 +108,7 @@ export default function TopFloatingDashboard({
                   />
                 ))}
                 <div className="relative h-3.5 w-3.5 rounded-full border border-slate-200 bg-slate-50 hover:scale-105 flex items-center justify-center cursor-pointer md:h-4.5 md:w-4.5">
-                  <Palette className="h-2 w-2 text-slate-500 md:h-2.5 md:w-2.5" />
+                  <Palette className="h-2 w-2 text-slate-700 md:h-2.5 md:w-2.5" />
                   <input
                     type="color"
                     value={activeMainColor}
@@ -120,11 +121,11 @@ export default function TopFloatingDashboard({
 
             {/* تخصيص ألوان النصوص */}
             <div className="flex items-center gap-2 border-r border-slate-100 pr-4 md:gap-3 md:pr-6">
-              <span className="text-[9px] text-slate-400 font-bold md:text-[10px]">النصوص</span>
+              <span className="text-[9px] text-slate-900 font-bold md:text-[10px]">النصوص</span>
               
               <div className="flex items-center gap-1">
-                <span className="text-[8px] text-slate-500 md:text-[9px]">عنوان</span>
-                <div className="relative h-3.5 w-3.5 rounded border border-slate-200 md:h-4 md:w-4" style={{ backgroundColor: project.globalTitleColor }}>
+                <span className="text-[8px] text-slate-900 md:text-[9px]">عنوان</span>
+                <div className="relative h-3.5 w-3.5 rounded-full border border-slate-200 md:h-4 md:w-4" style={{ backgroundColor: project.globalTitleColor }}>
                   <input
                     type="color"
                     value={project.globalTitleColor}
@@ -135,8 +136,8 @@ export default function TopFloatingDashboard({
               </div>
 
               <div className="flex items-center gap-1 pr-1 border-r border-slate-100">
-                <span className="text-[8px] text-slate-500 md:text-[9px]">فرعي</span>
-                <div className="relative h-3.5 w-3.5 rounded border border-slate-200 md:h-4 md:w-4" style={{ backgroundColor: project.globalSubtitleColor }}>
+                <span className="text-[8px] text-slate-900 md:text-[9px]">فرعي</span>
+                <div className="relative h-3.5 w-3.5 rounded-full border border-slate-200 md:h-4 md:w-4" style={{ backgroundColor: project.globalSubtitleColor }}>
                   <input
                     type="color"
                     value={project.globalSubtitleColor}
@@ -153,11 +154,11 @@ export default function TopFloatingDashboard({
         <div className="flex flex-shrink-0 items-center gap-3 border-r border-slate-100 pr-4 md:pr-0 md:border-r-0">
           {/* اختيار موديل الجهاز */}
           <div className="flex items-center gap-1">
-            <span className="text-[9px] font-bold text-slate-400 md:text-[10px]">الجهاز</span>
+            <span className="text-[9px] font-bold text-slate-900 md:text-[10px]">الجهاز</span>
             <select
               value={project.globalDeviceType}
               onChange={(e) => onChange({ ...project, globalDeviceType: e.target.value as any })}
-              className="rounded-lg border border-slate-200 bg-slate-50/50 px-1.5 py-1 text-[9px] font-semibold text-slate-700 focus:outline-none focus:ring-1 focus:ring-slate-300 cursor-pointer md:px-2 md:text-[10px]"
+              className="rounded-full border border-slate-200 bg-slate-50/50 px-2 py-1 text-[9px] font-semibold text-slate-900 focus:outline-none focus:ring-1 focus:ring-slate-300 cursor-pointer md:px-3 md:text-[10px]"
             >
               <option value="iphone-pro">آيفون برو</option>
               <option value="iphone-classic">آيفون نوتش</option>
@@ -168,16 +169,16 @@ export default function TopFloatingDashboard({
 
           {/* لون الإطار */}
           <div className="flex items-center border-r border-slate-100 pr-2 md:pr-3">
-            <div className="flex gap-0.5 bg-slate-100/80 p-0.5 rounded-lg md:gap-1">
+            <div className="flex gap-0.5 bg-slate-100/80 p-0.5 rounded-full md:gap-1">
               {(['titanium', 'black', 'white'] as const).map((color) => (
                 <button
                   key={color}
                   type="button"
                   onClick={() => onChange({ ...project, globalFrameColor: color })}
-                  className={`rounded-md px-1.5 py-0.5 text-[8px] font-semibold transition-all md:px-2 md:text-[9px] ${
+                  className={`rounded-full px-2.5 py-0.5 text-[8px] font-semibold transition-all md:px-3 md:text-[9px] ${
                     project.globalFrameColor === color
-                      ? 'bg-white text-slate-800 shadow-sm'
-                      : 'text-slate-500 hover:text-slate-700'
+                      ? 'bg-[#007AFF] text-white shadow-sm'
+                      : 'text-slate-900 hover:text-slate-950 font-semibold'
                   }`}
                 >
                   {color === 'titanium' ? 'تيتانيوم' : color === 'black' ? 'أسود' : 'أبيض'}
@@ -190,10 +191,10 @@ export default function TopFloatingDashboard({
           <button
             type="button"
             onClick={() => onChange({ ...project, showDeviceFrame: !project.showDeviceFrame })}
-            className={`flex items-center gap-1 rounded-lg border px-1.5 py-1 text-[9px] font-semibold transition-all md:px-2 md:text-[10px] ${
+            className={`flex items-center gap-1 rounded-full border px-2.5 py-1.5 text-[9px] font-semibold transition-all md:px-3.5 md:text-[10px] ${
               project.showDeviceFrame
-                ? 'border-slate-200 bg-slate-50 text-slate-800'
-                : 'border-slate-100 text-slate-400 hover:bg-slate-50'
+                ? 'border-[#007AFF] bg-[#007AFF] text-white shadow-sm'
+                : 'border-slate-200 bg-slate-50 text-slate-900 hover:bg-slate-100 font-semibold'
             }`}
           >
             {project.showDeviceFrame ? <Eye className="h-2.5 w-2.5 md:h-3 md:w-3" /> : <EyeOff className="h-2.5 w-2.5 md:h-3 md:w-3" />}
