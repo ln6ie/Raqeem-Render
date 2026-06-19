@@ -54,7 +54,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 }
 
 import { RaqeemLogo } from "@/components/ui/Logo"
-
+import { VisitorCounter } from "@/components/ui/VisitorCounter"
 import Link from "next/link"
 
 function Footer() {
@@ -84,9 +84,12 @@ function Footer() {
           <span>دقة كاملة</span>
         </div>
 
-        {/* اليسار: حقوق الملكية */}
-        <div className="text-[10px] text-slate-400 text-left md:text-right">
-          <span>جميع الحقوق محفوظة © {new Date().getFullYear()}</span>
+        {/* اليسار: حقوق الملكية ومعلومات المستخدمين */}
+        <div className="flex flex-col text-left md:text-right gap-1">
+          <span className="text-[10px] text-slate-400">جميع الحقوق محفوظة © {new Date().getFullYear()}</span>
+          <span className="text-[9px] font-bold text-[#007AFF]">
+            <VisitorCounter /> (زائر اليوم)
+          </span>
         </div>
         
       </div>

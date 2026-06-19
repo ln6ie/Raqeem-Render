@@ -1,25 +1,20 @@
-'use client'
-
 import Link from 'next/link'
 import { Download, Edit3, Layers } from 'lucide-react'
 import { RaqeemLogo } from '@/components/ui/Logo'
+import { VisitorCounter } from '@/components/ui/VisitorCounter'
 
 // الصفحة التعريفية للمشروع مفتوح المصدر بتصميم آبل المبسط
 export default function Home() {
-  const PREVIEW_THEMES = [
-    'linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%)',
-    'linear-gradient(135deg, #f43f5e 0%, #fb7185 100%)',
-    'linear-gradient(135deg, #059669 0%, #10b981 100%)',
-    'linear-gradient(135deg, #d97706 0%, #f59e0b 100%)',
-    'linear-gradient(135deg, #1e293b 0%, #0f172a 100%)',
-  ]
-
   return (
     <div dir="rtl" className="min-h-screen bg-slate-50/50 text-neutral-900 font-sans tracking-tight pt-24">
-      {/* الهيدر العلوي كبطاقة عائمة */}
-      <header className="fixed top-5 left-1/2 z-50 flex w-[90%] max-w-5xl -translate-x-1/2 items-center justify-between rounded-2xl border border-slate-100/80 bg-white/80 p-3.5 px-6 shadow-xl backdrop-blur-lg transition-all">
-        <div className="flex items-center gap-2">
+      {/* الهيدر العلوي كبطاقة عائمة بحواف دائرية كاملة */}
+      <header className="fixed top-5 left-1/2 z-50 flex w-[90%] max-w-5xl -translate-x-1/2 items-center justify-between rounded-full border border-slate-100/80 bg-white/80 p-2.5 px-6 shadow-xl backdrop-blur-lg transition-all">
+        <div className="flex items-center gap-3">
           <RaqeemLogo size={32} />
+          {/* شارة المستخدمين باللون الأزرق الداكن الملكي 100% والنص باللون الأبيض */}
+          <div className="flex items-center rounded-full bg-[#007AFF] px-3.5 py-1 text-[9px] font-bold text-white shadow-sm">
+            <VisitorCounter />
+          </div>
         </div>
         <a
           href="https://github.com"
@@ -63,19 +58,97 @@ export default function Home() {
       </section>
 
       {/* قسم المعاينة البصرية المبسطة */}
-      <section className="mx-auto max-w-5xl px-6 pb-20">
-        <div className="flex justify-center gap-5 overflow-x-auto py-6 scrollbar-none">
-          {PREVIEW_THEMES.map((bg, idx) => (
+      <section className="w-full pb-20 overflow-hidden">
+        <div className="flex justify-start gap-6 overflow-x-auto py-6 px-8 scrollbar-none md:justify-center">
+          {[
+            {
+              bg: 'linear-gradient(135deg, #007AFF 0%, #004499 100%)',
+              badge: 'الواجهة الذكية',
+              badgeBg: '#FFE600',
+              badgeColor: '#0a0a0a',
+              title: 'الواجهة الأولى',
+              subtitle: 'هاتف مدمج من الأسفل',
+              layout: 'text-bottom',
+            },
+            {
+              bg: '#0b132b',
+              badge: 'سرعة وكفاءة',
+              badgeBg: '#007AFF',
+              badgeColor: '#ffffff',
+              title: 'تحليل البيانات',
+              subtitle: 'إحصائيات متكاملة فورا',
+              layout: 'text-top',
+            },
+            {
+              bg: '#1c2541',
+              badge: 'تصميم متناسق',
+              badgeBg: '#FFE600',
+              badgeColor: '#0a0a0a',
+              title: 'الأمان المالي',
+              subtitle: 'تشفير كامل لبياناتك',
+              layout: 'text-top',
+            },
+            {
+              bg: 'linear-gradient(135deg, #0056b3 0%, #002244 100%)',
+              badge: 'تحديث فوري',
+              badgeBg: '#ffffff',
+              badgeColor: '#007AFF',
+              title: 'أكاديمية رقيم',
+              subtitle: 'دروس تفاعلية مبسطة',
+              layout: 'text-top',
+            },
+            {
+              bg: '#0a0f1d',
+              badge: 'تصدير سهل',
+              badgeBg: '#FFE600',
+              badgeColor: '#0a0a0a',
+              title: 'تداول ذكي',
+              subtitle: 'أدوات تحليلية مبتكرة',
+              layout: 'text-top',
+            }
+          ].map((screen, idx) => (
             <div
               key={idx}
-              className="h-64 w-32 flex-shrink-0 rounded-2xl shadow-sm border border-neutral-100 flex flex-col justify-between p-3 text-white transition-all hover:scale-[1.02]"
-              style={{ background: bg }}
+              className="h-[320px] w-48 flex-shrink-0 rounded-3xl shadow-xl border border-white/10 flex flex-col justify-between p-4 transition-all hover:scale-[1.03] select-none text-white"
+              style={{ background: screen.bg }}
             >
-              <div className="space-y-1 text-center">
-                <div className="h-1.5 w-10 bg-white/30 rounded mx-auto" />
-                <div className="h-1 w-6 bg-white/25 rounded mx-auto" />
-              </div>
-              <div className="h-32 w-full bg-white/5 rounded-xl border border-white/10 border-dashed" />
+              {screen.layout === 'text-top' ? (
+                <>
+                  <div className="space-y-2 text-right">
+                    {/* البادج الصغير المصغر */}
+                    <div
+                      className="inline-block rounded-full px-2 py-0.5 text-[8px] font-bold"
+                      style={{ backgroundColor: screen.badgeBg, color: screen.badgeColor }}
+                    >
+                      {screen.badge}
+                    </div>
+                    <div className="text-[12px] font-extrabold">{screen.title}</div>
+                    <div className="text-[8px] opacity-80">{screen.subtitle}</div>
+                  </div>
+                  {/* مجسم الهاتف المصغر */}
+                  <div className="h-36 w-full rounded-t-2xl bg-white/15 border border-white/10 border-b-0 relative overflow-hidden">
+                    <div className="mx-auto mt-1 h-1 w-8 bg-black/40 rounded-full" />
+                  </div>
+                </>
+              ) : (
+                <>
+                  {/* مجسم الهاتف المصغر في الأعلى */}
+                  <div className="h-36 w-full rounded-b-2xl bg-white/15 border border-white/10 border-t-0 relative overflow-hidden">
+                    <div className="mx-auto mt-1 h-1.5 w-1.5 bg-white/20 rounded-full" />
+                  </div>
+                  <div className="space-y-2 text-right">
+                    {/* البادج الصغير المصغر */}
+                    <div
+                      className="inline-block rounded-full px-2 py-0.5 text-[8px] font-bold"
+                      style={{ backgroundColor: screen.badgeBg, color: screen.badgeColor }}
+                    >
+                      {screen.badge}
+                    </div>
+                    <div className="text-[12px] font-extrabold">{screen.title}</div>
+                    <div className="text-[8px] opacity-80">{screen.subtitle}</div>
+                  </div>
+                </>
+              )}
             </div>
           ))}
         </div>

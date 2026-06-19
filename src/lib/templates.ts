@@ -66,22 +66,22 @@ export const PANORAMIC_THEMES: PanoramicTheme[] = [
     id: 'neon-badges',
     name: 'Neon Badges',
     thumbnail: '/themes/neon-badges.png',
-    globalFont: { titleColor: '#111111', subtitleColor: '#333333', family: 'Cairo' },
+    globalFont: { titleColor: '#ffffff', subtitleColor: '#cbd5e1', family: 'Cairo' },
     screens: [
       {
         layout: 'text-bottom',
         hideDevice: false,
-        bgOverride: '#29C5F6',
-        titleColor: '#0a0a0a',
-        subtitleColor: '#0a0a0a',
+        bgOverride: 'linear-gradient(135deg, #007AFF 0%, #004499 100%)',
+        titleColor: '#ffffff',
+        subtitleColor: '#e0f2fe',
         textAlign: 'left',
-        badge: 'الثروة الرقمية',
+        badge: 'الواجهة الذكية',
         badgeBg: '#FFE600',
         badgeColor: '#0a0a0a',
         decoration: {
           type: 'circle',
           data: '320',
-          fill: 'rgba(255,255,255,0.12)',
+          fill: 'rgba(255,255,255,0.15)',
           x: 1100,
           y: 600
         }
@@ -89,28 +89,28 @@ export const PANORAMIC_THEMES: PanoramicTheme[] = [
       {
         layout: 'text-top',
         hideDevice: false,
-        bgOverride: '#f5f5f5',
-        titleColor: '#0a0a0a',
-        subtitleColor: '#0a0a0a',
+        bgOverride: '#0b132b',
+        titleColor: '#ffffff',
+        subtitleColor: '#9ab0e5',
         textAlign: 'left',
-        badge: 'ابدأ الاستثمار اليوم',
-        badgeBg: '#0a0a0a',
+        badge: 'سرعة وكفاءة',
+        badgeBg: '#007AFF',
         badgeColor: '#ffffff'
       },
       {
         layout: 'text-top',
         hideDevice: false,
-        bgOverride: '#0f0f0f',
+        bgOverride: '#1c2541',
         titleColor: '#ffffff',
-        subtitleColor: '#ffffff',
+        subtitleColor: '#cbd5e1',
         textAlign: 'left',
-        badge: 'ابنِ ثروتك',
+        badge: 'تصميم متناسق',
         badgeBg: '#FFE600',
         badgeColor: '#0a0a0a',
         decoration: {
           type: 'circle',
           data: '280',
-          fill: 'rgba(255,230,0,0.08)',
+          fill: 'rgba(0,122,255,0.2)',
           x: 660,
           y: 2200
         }
@@ -118,22 +118,22 @@ export const PANORAMIC_THEMES: PanoramicTheme[] = [
       {
         layout: 'text-top',
         hideDevice: false,
-        bgOverride: '#FFE600',
-        titleColor: '#0a0a0a',
-        subtitleColor: '#0a0a0a',
+        bgOverride: 'linear-gradient(135deg, #0056b3 0%, #002244 100%)',
+        titleColor: '#ffffff',
+        subtitleColor: '#e0f2fe',
         textAlign: 'left',
-        badge: 'تعلم قبل أن تستثمر',
-        badgeBg: '#0a0a0a',
-        badgeColor: '#FFE600'
+        badge: 'تحديث فوري',
+        badgeBg: '#ffffff',
+        badgeColor: '#007AFF'
       },
       {
         layout: 'text-top',
         hideDevice: false,
-        bgOverride: '#131313',
+        bgOverride: '#0a0f1d',
         titleColor: '#ffffff',
-        subtitleColor: '#ffffff',
+        subtitleColor: '#9ab0e5',
         textAlign: 'left',
-        badge: 'استكشف الأسواق',
+        badge: 'تصدير سهل',
         badgeBg: '#FFE600',
         badgeColor: '#0a0a0a'
       }
