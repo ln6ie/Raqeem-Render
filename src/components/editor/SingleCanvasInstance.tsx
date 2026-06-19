@@ -27,10 +27,10 @@ const FRAME_COLORS = {
 
 // الحصول على نصف قطر حواف الهاتف حسب نوعه
 function getDeviceRadius(type: string) {
-  if (type === 'android-ultra') return 24
-  if (type === 'iphone-classic') return 140
-  if (type === 'android-punch') return 100
-  return 120
+  if (type === 'android-ultra') return 22
+  if (type === 'iphone-classic') return 130
+  if (type === 'android-punch') return 94
+  return 110
 }
 
 // تحويل أي صيغة لون (Hex أو RGB/RGBA) إلى صيغة Hex من 7 رموز
@@ -124,20 +124,20 @@ export default function SingleCanvasInstance({
   const activeTitleColor = screen.config?.titleColor || project.globalTitleColor
   const activeSubtitleColor = screen.config?.subtitleColor || project.globalSubtitleColor
 
-  let titleY = 150
-  let subtitleY = 290
-  let deviceY = 460
+  let titleY = 140
+  let subtitleY = 270
+  let deviceY = 380
   let badgeY = 60
 
   if (layout === 'text-bottom') {
-    deviceY = 80          // الهاتف يبدأ من الأعلى
-    titleY = 2580         // النص بعد نهاية الهاتف (80+2388=2468)
-    subtitleY = 2700
-    badgeY = 2500
+    deviceY = 80
+    titleY = 2410
+    subtitleY = 2530
+    badgeY = 2330
   } else if (layout === 'hero-center') {
-    titleY = 1250
-    subtitleY = 1420
-    badgeY = 1160
+    titleY = 1170
+    subtitleY = 1330
+    badgeY = 1080
   }
 
   const decoration = screen.config?.decoration
@@ -145,7 +145,6 @@ export default function SingleCanvasInstance({
   const badgeBg = screen.config?.badgeBg || '#000000'
   const badgeColor = screen.config?.badgeColor || '#ffffff'
 
-  // إنشاء نقاط التوقف للتدرج الثنائي لـ Konva
   const colorStops = [0, colorTop, 1, colorBottom]
 
   return (
@@ -159,7 +158,7 @@ export default function SingleCanvasInstance({
     >
       <input ref={fileRef} type="file" accept="image/*" className="hidden" onChange={handleFileChange} />
       
-      <div className="relative overflow-hidden rounded-xl bg-slate-50" style={{ width: 330, height: 717 }}>
+      <div className="relative overflow-hidden rounded-xl bg-slate-50" style={{ width: 310.5, height: 672 }}>
         {loading && (
           <div className="absolute inset-0 z-10 flex items-center justify-center bg-white/60 backdrop-blur-sm">
             <div className="h-8 w-8 animate-spin rounded-full border-4 border-blue-500 border-t-transparent" />
@@ -172,13 +171,13 @@ export default function SingleCanvasInstance({
           </div>
         )}
 
-        <Stage ref={stageRef} width={330} height={717} scaleX={0.25} scaleY={0.25}>
+        <Stage ref={stageRef} width={310.5} height={672} scaleX={0.25} scaleY={0.25}>
           <Layer>
             <Rect 
               key={screen.backgroundColor}
-              x={0} y={0} width={1320} height={2868}
+              x={0} y={0} width={1242} height={2688}
               fillLinearGradientStartPoint={{ x: 0, y: 0 }}
-              fillLinearGradientEndPoint={{ x: 0, y: 2868 }}
+              fillLinearGradientEndPoint={{ x: 0, y: 2688 }}
               fillLinearGradientColorStops={colorStops}
             />
             
@@ -193,16 +192,16 @@ export default function SingleCanvasInstance({
           {!isHideDevice && (
             <Layer>
               {screenshotImg ? (
-                <KonvaImage image={screenshotImg} x={110} y={deviceY} width={1100} height={2388} cornerRadius={deviceRadius} onClick={handleUploadClick} />
+                <KonvaImage image={screenshotImg} x={103.5} y={deviceY} width={1035} height={2240} cornerRadius={deviceRadius} onClick={handleUploadClick} />
               ) : (
-                <Rect x={110} y={deviceY} width={1100} height={2388} fill="rgba(255,255,255,0.15)" stroke="rgba(255,255,255,0.3)" strokeWidth={4} dash={[20, 10]} cornerRadius={deviceRadius} onClick={handleUploadClick} />
+                <Rect x={103.5} y={deviceY} width={1035} height={2240} fill="rgba(255,255,255,0.15)" stroke="rgba(255,255,255,0.3)" strokeWidth={4} dash={[20, 10]} cornerRadius={deviceRadius} onClick={handleUploadClick} />
               )}
             </Layer>
           )}
 
           {showDevice && (
             <Layer>
-              <Rect x={110} y={deviceY} width={1100} height={2388} cornerRadius={deviceRadius} fill="transparent" stroke={frameColor}
+              <Rect x={103.5} y={deviceY} width={1035} height={2240} cornerRadius={deviceRadius} fill="transparent" stroke={frameColor}
                 strokeWidth={
                   project.globalDeviceType === 'android-ultra' ? 18 :
                   project.globalDeviceType === 'android-punch' ? 22 :
@@ -212,19 +211,18 @@ export default function SingleCanvasInstance({
               />
               
               {project.globalDeviceType === 'iphone-pro' && (
-                <Rect x={485} y={deviceY + 40} width={350} height={105} cornerRadius={52.5} fill="#000000" onClick={handleUploadClick} />
+                <Rect x={461} y={deviceY + 36} width={320} height={96} cornerRadius={48} fill="#000000" onClick={handleUploadClick} />
               )}
               {project.globalDeviceType === 'iphone-classic' && (
-                <Rect x={485} y={deviceY} width={350} height={80} cornerRadius={[0, 0, 30, 30]} fill="#000000" onClick={handleUploadClick} />
+                <Rect x={461} y={deviceY} width={320} height={75} cornerRadius={[0, 0, 26, 26]} fill="#000000" onClick={handleUploadClick} />
               )}
               {(project.globalDeviceType === 'android-ultra' || project.globalDeviceType === 'android-punch') && (
-                <Circle x={660} y={deviceY + 50} radius={22} fill="#000000" onClick={handleUploadClick} />
+                <Circle x={621} y={deviceY + 46} radius={20} fill="#000000" onClick={handleUploadClick} />
               )}
             </Layer>
           )}
 
           <Layer>
-            {/* رسم البادج كرسالة ملصقة بشكل حبة دائرية */}
             {badge && (
               <>
                 <Rect
@@ -254,7 +252,7 @@ export default function SingleCanvasInstance({
               text={screen.title}
               x={titleX}
               y={titleY}
-              width={1160}
+              width={1082}
               fontSize={90}
               fill={activeTitleColor}
               fontStyle="bold"
@@ -266,7 +264,7 @@ export default function SingleCanvasInstance({
               text={screen.subtitle}
               x={titleX}
               y={subtitleY}
-              width={1160}
+              width={1082}
               fontSize={52}
               fill={activeSubtitleColor}
               fontStyle="bold"
@@ -278,17 +276,17 @@ export default function SingleCanvasInstance({
         </Stage>
 
         {editingField === 'badge' && (
-          <InlineTextOverlay value={badge || ''} top={badgeY * 0.25 + 40} left={80 * 0.25} width={1160 * 0.25} fontSize={14}
+          <InlineTextOverlay value={badge || ''} top={badgeY * 0.25 + 40} left={80 * 0.25} width={1082 * 0.25} fontSize={14}
             onChange={(val) => onUpdateText({ config: { ...(screen.config || { layout: 'text-top' }), badge: val } })} onClose={() => setEditingField(null)} />
         )}
 
         {editingField === 'title' && (
-          <InlineTextOverlay value={screen.title} top={titleY * 0.25} left={80 * 0.25} width={1160 * 0.25} fontSize={20}
+          <InlineTextOverlay value={screen.title} top={titleY * 0.25} left={80 * 0.25} width={1082 * 0.25} fontSize={20}
             onChange={(val) => onUpdateText({ title: val })} onClose={() => setEditingField(null)} />
         )}
 
         {editingField === 'subtitle' && (
-          <InlineTextOverlay value={screen.subtitle} top={subtitleY * 0.25} left={80 * 0.25} width={1160 * 0.25} fontSize={14}
+          <InlineTextOverlay value={screen.subtitle} top={subtitleY * 0.25} left={80 * 0.25} width={1082 * 0.25} fontSize={14}
             onChange={(val) => onUpdateText({ subtitle: val })} onClose={() => setEditingField(null)} />
         )}
       </div>

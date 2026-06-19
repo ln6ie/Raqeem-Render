@@ -13,7 +13,7 @@ export const PANORAMIC_THEMES: PanoramicTheme[] = [
         bgOverride: 'linear-gradient(135deg, #0f172a 0%, #1e293b 100%)',
         decoration: {
           type: 'path',
-          data: 'M0,1000 C300,800 600,1200 1320,900 L1320,2868 L0,2868 Z',
+          data: 'M0,937 C282,750 564,1125 1242,843 L1242,2688 L0,2688 Z',
           fill: 'rgba(56, 189, 248, 0.1)',
           x: 0,
           y: 0
@@ -39,8 +39,8 @@ export const PANORAMIC_THEMES: PanoramicTheme[] = [
           type: 'circle',
           data: '400',
           fill: 'rgba(139, 92, 246, 0.3)',
-          x: 660,
-          y: 1434
+          x: 621,
+          y: 1344
         }
       },
       { layout: 'text-bottom', hideDevice: false, bgOverride: '#09090b' },
@@ -82,8 +82,8 @@ export const PANORAMIC_THEMES: PanoramicTheme[] = [
           type: 'circle',
           data: '320',
           fill: 'rgba(255,255,255,0.15)',
-          x: 1100,
-          y: 600
+          x: 1035,
+          y: 562
         }
       },
       {
@@ -111,8 +111,8 @@ export const PANORAMIC_THEMES: PanoramicTheme[] = [
           type: 'circle',
           data: '280',
           fill: 'rgba(0,122,255,0.2)',
-          x: 660,
-          y: 2200
+          x: 621,
+          y: 2062
         }
       },
       {

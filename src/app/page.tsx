@@ -181,7 +181,7 @@ export default function Home() {
               <Download className="h-5 w-5 text-neutral-800" />
               <h3 className="text-sm font-semibold text-neutral-950">دقة تصدير فائقة</h3>
               <p className="text-xs text-neutral-500 leading-relaxed">
-                احصل على لقطات شاشتك بدقة 1320x2868 بكسل جاهزة للرفع المباشر بجودة عالية.
+                احصل على لقطات شاشتك بدقة 1242x2688 بكسل جاهزة للرفع المباشر بجودة عالية.
               </p>
             </div>
           </div>
