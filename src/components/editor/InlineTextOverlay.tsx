@@ -1,18 +1,9 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
+import type { InlineTextOverlayProps } from '@/types'
 
-interface InlineTextOverlayProps {
-  value: string
-  top: number
-  left: number
-  width: number
-  fontSize: number
-  onChange: (val: string) => void
-  onClose: () => void
-}
-
-// نافذة منبثقة لتحرير النصوص مباشرة
+// نافذة منبثقة لتحرير النصوص 
 export default function InlineTextOverlay({
   value,
   top,

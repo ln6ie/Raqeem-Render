@@ -1,6 +1,6 @@
 import type Konva from 'konva'
 
-// تصدير الشاشات الخمس بجودة عالية جدا
+// تصدير الشاشات الخمس
 export async function exportPanoramicSet(
   stageRefs: React.RefObject<Konva.Stage | null>[]
 ): Promise<void> {

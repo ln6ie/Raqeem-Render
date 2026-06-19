@@ -3,7 +3,7 @@ import { Download, Edit3, Layers } from 'lucide-react'
 import { RaqeemLogo } from '@/components/ui/Logo'
 import { VisitorCounter } from '@/components/ui/VisitorCounter'
 
-// الصفحة التعريفية للمشروع مفتوح المصدر بتصميم آبل المبسط
+// الصفحة التعريفية للمشروع     
 export default function Home() {
   return (
     <div dir="rtl" className="min-h-screen bg-slate-50/50 text-neutral-900 font-sans tracking-tight pt-24">
@@ -14,7 +14,7 @@ export default function Home() {
           <span className="text-xs sm:text-sm font-black tracking-tight text-slate-900 font-sans whitespace-nowrap">Raqeem Render</span>
         </div>
         <div className="flex items-center gap-1.5 sm:gap-2.5 flex-shrink-0">
-          {/* شارة المستخدمين باللون الأزرق الداكن الملكي 100% والنص باللون الأبيض */}
+          {/* شارة المستخدمين  */}
           <div className="flex items-center rounded-full bg-[#007AFF] px-2 sm:px-3 py-0.5 sm:py-1 text-[8px] sm:text-[9px] font-bold text-white shadow-sm whitespace-nowrap flex-shrink-0">
             <VisitorCounter />
           </div>
@@ -60,7 +60,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* قسم المعاينة البصرية المبسطة */}
+      {/* قسم المعاينة البصرية */}
       <section className="w-full pb-20 overflow-hidden">
         <div className="flex justify-start gap-6 overflow-x-auto py-6 px-8 scrollbar-none md:justify-center">
           {[
@@ -118,7 +118,7 @@ export default function Home() {
               {screen.layout === 'text-top' ? (
                 <>
                   <div className="space-y-2 text-right">
-                    {/* البادج الصغير المصغر */}
+                    {/* البادج الصغير */}
                     <div
                       className="inline-block rounded-full px-2 py-0.5 text-[8px] font-bold"
                       style={{ backgroundColor: screen.badgeBg, color: screen.badgeColor }}
@@ -128,19 +128,19 @@ export default function Home() {
                     <div className="text-[12px] font-extrabold">{screen.title}</div>
                     <div className="text-[8px] opacity-80">{screen.subtitle}</div>
                   </div>
-                  {/* مجسم الهاتف المصغر */}
+                  {/* مجسم الهاتف */}
                   <div className="h-36 w-full rounded-t-2xl bg-white/15 border border-white/10 border-b-0 relative overflow-hidden">
                     <div className="mx-auto mt-1 h-1 w-8 bg-black/40 rounded-full" />
                   </div>
                 </>
               ) : (
                 <>
-                  {/* مجسم الهاتف المصغر في الأعلى */}
+                  {/* مجسم الهاتف في الأعلى */}
                   <div className="h-36 w-full rounded-b-2xl bg-white/15 border border-white/10 border-t-0 relative overflow-hidden">
                     <div className="mx-auto mt-1 h-1.5 w-1.5 bg-white/20 rounded-full" />
                   </div>
                   <div className="space-y-2 text-right">
-                    {/* البادج الصغير المصغر */}
+                    {/* البادج الصغير  */}
                     <div
                       className="inline-block rounded-full px-2 py-0.5 text-[8px] font-bold"
                       style={{ backgroundColor: screen.badgeBg, color: screen.badgeColor }}
@@ -157,7 +157,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* قسم المزايا المبسط */}
+      {/* قسم المزايا  */}
       <section className="border-t border-neutral-100 bg-[#F5F5F7] py-20">
         <div className="mx-auto max-w-5xl px-6">
           <div className="grid gap-12 sm:grid-cols-3">

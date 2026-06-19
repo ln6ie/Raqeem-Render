@@ -1,6 +1,9 @@
-import type { Metadata } from "next"
 import { Cairo } from "next/font/google"
+import { siteMetadata } from "@/lib/metadata"
 import "./globals.css"
+import { RaqeemLogo } from "@/components/ui/Logo"
+import { VisitorCounter } from "@/components/ui/VisitorCounter"
+import Link from "next/link"
 
 const cairo = Cairo({
   subsets: ["arabic", "latin"],
@@ -8,39 +11,7 @@ const cairo = Cairo({
   variable: "--font-cairo",
 })
 
-export const metadata: Metadata = {
-  title: "Raqeem Render — صانع لقطات الشاشة البانورامية لتطبيقات الجوال",
-  description: "صمم لقطات شاشتك لمتجر التطبيقات بأسلوب بانورامي متكامل مجاناً وبأعلى دقة دون تسجيل أو إعلانات.",
-  keywords: ["تصميم لقطات شاشة", "App Store screenshots", "لقطات شاشة بانورامية", "Raqeem Render", "رقيم ريندر", "تصدير فريمات"],
-  authors: [{ name: "Raqeem Render" }],
-  openGraph: {
-    title: "Raqeem Render — صانع لقطات الشاشة البانورامية",
-    description: "صمم لقطات شاشتك لمتجر التطبيقات بأسلوب بانورامي متكامل مجاناً وبأعلى دقة دون تسجيل أو إعلانات.",
-    url: "https://raqeemrender.netlify.app/",
-    siteName: "Raqeem Render",
-    images: [
-      {
-        url: "/logo.svg",
-        width: 512,
-        height: 512,
-        alt: "لوغو Raqeem Render",
-      },
-    ],
-    locale: "ar_EG",
-    type: "website",
-  },
-  twitter: {
-    card: "summary",
-    title: "Raqeem Render — صانع لقطات الشاشة البانورامية",
-    description: "صمم لقطات شاشتك لمتجر التطبيقات بأسلوب بانورامي متكامل مجاناً وبأعلى دقة دون تسجيل أو إعلانات.",
-    images: ["/logo.svg"],
-  },
-  icons: {
-    icon: "/logo.svg",
-    shortcut: "/logo.svg",
-    apple: "/logo.svg",
-  },
-}
+export const metadata = siteMetadata
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -52,10 +23,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     </html>
   )
 }
-
-import { RaqeemLogo } from "@/components/ui/Logo"
-import { VisitorCounter } from "@/components/ui/VisitorCounter"
-import Link from "next/link"
 
 function Footer() {
   return (

@@ -1,20 +1,13 @@
 'use client'
 
-import type { PanoramicProjectState, AppScreen } from '@/types'
+import type { TopFloatingDashboardProps } from '@/types'
 import { Download, Eye, EyeOff, Palette, Layers } from 'lucide-react'
 import { applyTheme } from '@/actions/projectState'
+import { colorToHex, parseGradientColors } from '@/actions/canvasHelpers'
 import { PANORAMIC_THEMES } from '@/lib/templates'
 
 import { RaqeemLogo } from '@/components/ui/Logo'
 import Link from 'next/link'
-
-interface Props {
-  project: PanoramicProjectState
-  activeScreen: AppScreen | undefined
-  onChange: (project: PanoramicProjectState) => void
-  onUpdateScreen: (screenId: string, updates: Partial<AppScreen>) => void
-  onExportAll: () => void
-}
 
 const PRESET_GRADIENTS = [
   'linear-gradient(135deg, #0a1128 0%, #1c2541 100%)',
@@ -24,18 +17,6 @@ const PRESET_GRADIENTS = [
   'linear-gradient(135deg, #0a1128 0%, #007AFF 100%)',
 ]
 
-// تحويل صيغة اللون إلى Hex
-function colorToHex(color: string): string {
-  if (!color) return '#4f46e5'
-  if (color.startsWith('#')) {
-    if (color.length === 4 || color.length === 5) {
-      return '#' + color[1] + color[1] + color[2] + color[2] + color[3] + color[3]
-    }
-    return color
-  }
-  return '#4f46e5'
-}
-
 // لوحة تحكم علوية بتنسيق مرتب وراقي جدا
 export default function TopFloatingDashboard({
   project,
@@ -43,7 +24,7 @@ export default function TopFloatingDashboard({
   onChange,
   onUpdateScreen,
   onExportAll,
-}: Props) {
+}: TopFloatingDashboardProps) {
   const activeColorMatches = activeScreen?.backgroundColor.match(/#(?:[0-9a-fA-F]{3,4}){1,2}\b|rgba?\(\s*\d+\s*,\s*\d+\s*,\s*\d+\s*(?:,\s*[\d.]+\s*)?\)/g) || ['#4f46e5']
   const activeMainColor = colorToHex(activeColorMatches[0] || '#4f46e5')
 
@@ -70,7 +51,7 @@ export default function TopFloatingDashboard({
         </button>
       </div>
 
-      {/* شريط الأدوات بالتمرير الأفقي للأجهزة المحمولة */}
+      {/* شريط الأدوات بالتمرير الأفقي للهاتف */}
       <div className="flex items-center gap-4 overflow-x-auto overflow-y-hidden py-1 scrollbar-none md:overflow-visible md:py-0 md:gap-6 touch-pan-x">
         {/* اختيار القالب */}
         <div className="flex flex-shrink-0 items-center gap-1.5">
@@ -92,7 +73,7 @@ export default function TopFloatingDashboard({
 
         {activeScreen && (
           <div className="flex flex-shrink-0 items-center gap-4 border-r border-slate-100 pr-4 md:gap-6 md:pr-6">
-            {/* تخصيص خلفية الشاشة النشطة */}
+            {/* تخصيص خلفية الشاشة */}
             <div className="flex items-center gap-1.5">
               <span className="text-[9px] font-bold text-slate-900 md:text-[10px]">الخلفية</span>
               <div className="flex items-center gap-1">

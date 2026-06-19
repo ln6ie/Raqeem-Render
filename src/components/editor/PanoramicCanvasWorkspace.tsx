@@ -1,23 +1,16 @@
 'use client'
 
 import { useRef } from 'react'
-import type { PanoramicProjectState, AppScreen } from '@/types'
+import type { AppScreen, PanoramicCanvasWorkspaceProps } from '@/types'
 import { updateScreen } from '@/actions/projectState'
 import SingleCanvasInstance from './SingleCanvasInstance'
-import type Konva from 'konva'
 
-interface Props {
-  project: PanoramicProjectState
-  stageRefs: React.RefObject<Konva.Stage | null>[]
-  onChange: (project: PanoramicProjectState) => void
-}
-
-// مساحة العمل الأفقية لعرض الشاشات الخمس جنبًا إلى جنب مع دعم التمرير الذكي
+// مساحة العمل الأفقية لعرض الشاشات الخمس مع دعم التمرير 
 export default function PanoramicCanvasWorkspace({
   project,
   stageRefs,
   onChange,
-}: Props) {
+}: PanoramicCanvasWorkspaceProps) {
   const containerRef = useRef<HTMLDivElement>(null)
 
   // تحويل التمرير العمودي لعجلات الفأرة إلى تمرير أفقي
