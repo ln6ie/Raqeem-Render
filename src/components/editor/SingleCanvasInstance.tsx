@@ -72,6 +72,20 @@ export default function SingleCanvasInstance({
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(false)
   const [editingField, setEditingField] = useState<'title' | 'subtitle' | 'badge' | null>(null)
+  const [scale, setScale] = useState(0.25)
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 768) {
+        setScale(0.15)
+      } else {
+        setScale(0.25)
+      }
+    }
+    handleResize()
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
 
   useEffect(() => {
     if (screen.screenshotUrl) {
