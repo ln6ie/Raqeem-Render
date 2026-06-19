@@ -1,50 +1,53 @@
 'use client'
 
-import { useState, useEffect, useCallback } from 'react'
-import type { DesignState } from '@/types'
-import { getTemplateById, TEMPLATES } from '@/lib/templates'
-import { templateToDesignState } from '@/actions/parseTemplate'
-import Sidebar from '@/components/editor/Sidebar'
-import CanvasArea from '@/components/editor/CanvasArea'
+import { useState, useRef, useCallback } from 'react'
+import type Konva from 'konva'
+import { createEmptyProject, updateScreen, getActiveScreen } from '@/actions/projectState'
+import { exportPanoramicSet } from '@/actions/exportCanvas'
+import TopFloatingDashboard from '@/components/editor/TopFloatingDashboard'
+import PanoramicCanvasWorkspace from '@/components/editor/PanoramicCanvasWorkspace'
+import type { AppScreen } from '@/types'
 
-const FALLBACK_TEMPLATE = TEMPLATES[0]
-
+// الصفحة الرئيسية للمحرر لإدارة الشاشات الخمس
 export default function EditorPage() {
-  const [design, setDesign] = useState<DesignState | null>(null)
+  const [project, setProject] = useState(createEmptyProject)
+  
+  const stageRefs = [
+    useRef<Konva.Stage | null>(null),
+    useRef<Konva.Stage | null>(null),
+    useRef<Konva.Stage | null>(null),
+    useRef<Konva.Stage | null>(null),
+    useRef<Konva.Stage | null>(null),
+  ]
 
-  useEffect(() => {
-    const params = new URLSearchParams(window.location.search)
-    const templateId = params.get('template')
-    const template = templateId ? getTemplateById(templateId) : null
-    const initial = template ?? FALLBACK_TEMPLATE
-    setDesign(templateToDesignState(initial))
-  }, [])
+  const handleUpdateScreen = useCallback(
+    (screenId: string, updates: Partial<AppScreen>) => {
+      setProject((prev) => updateScreen(prev, screenId, updates))
+    },
+    [],
+  )
 
-  const handleDesignChange = useCallback((updates: Partial<DesignState>) => {
-    setDesign((prev) => prev ? { ...prev, ...updates } : prev)
-  }, [])
+  const handleExportAll = useCallback(() => {
+    exportPanoramicSet(stageRefs)
+  }, [stageRefs])
 
-  const handleTemplateSelect = useCallback((template: typeof FALLBACK_TEMPLATE) => {
-    setDesign(templateToDesignState(template))
-  }, [])
-
-  if (!design) {
-    return (
-      <div className="flex items-center justify-center h-[80vh]">
-        <div className="h-8 w-8 animate-spin rounded-full border-4 border-[#E2E8F0] border-t-[#1B3A6B]" />
-      </div>
-    )
-  }
+  const activeScreen = getActiveScreen(project)
 
   return (
-    <div className="flex h-[calc(100vh-65px-53px)] flex-col lg:flex-row">
-      <Sidebar
-        design={design}
-        onDesignChange={handleDesignChange}
-        onTemplateSelect={handleTemplateSelect}
+    <div className="relative flex h-screen w-screen flex-col bg-[#F8FAFC] overflow-hidden pt-28">
+      <TopFloatingDashboard
+        project={project}
+        activeScreen={activeScreen}
+        onChange={setProject}
+        onUpdateScreen={handleUpdateScreen}
+        onExportAll={handleExportAll}
       />
-      <div className="flex flex-1 items-center justify-center overflow-auto bg-[#F8FAFC] p-6">
-        <CanvasArea design={design} />
+      <div className="flex-1 flex items-center justify-center overflow-hidden">
+        <PanoramicCanvasWorkspace
+          project={project}
+          stageRefs={stageRefs}
+          onChange={setProject}
+        />
       </div>
     </div>
   )

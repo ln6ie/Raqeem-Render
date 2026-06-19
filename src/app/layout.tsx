@@ -1,45 +1,55 @@
 import type { Metadata } from "next"
-import { Inter } from "next/font/google"
-import Link from "next/link"
+import { Cairo } from "next/font/google"
 import "./globals.css"
 
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
+const cairo = Cairo({
+  subsets: ["arabic", "latin"],
+  weight: ["400", "700"],
+  variable: "--font-cairo",
 })
 
 export const metadata: Metadata = {
-  title: "RaqeemFrame — App Store Screenshot Designer",
-  description: "Design beautiful App Store screenshots for free. No sign-up, no ads, just export.",
+  title: "رقيم ريندر — صانع لقطات الشاشة البانورامية لتطبيقات الجوال",
+  description: "صمم لقطات شاشتك لمتجر التطبيقات بأسلوب بانورامي متكامل مجاناً وبأعلى دقة دون تسجيل أو إعلانات.",
+  keywords: ["تصميم لقطات شاشة", "App Store screenshots", "لقطات شاشة بانورامية", "Raqeem Render", "رقيم ريندر", "تصدير فريمات"],
+  authors: [{ name: "رقيم ريندر" }],
+  openGraph: {
+    title: "رقيم ريندر — صانع لقطات الشاشة البانورامية",
+    description: "صمم لقطات شاشتك لمتجر التطبيقات بأسلوب بانورامي متكامل مجاناً وبأعلى دقة دون تسجيل أو إعلانات.",
+    url: "https://raqeem-render.vercel.app",
+    siteName: "رقيم ريندر",
+    images: [
+      {
+        url: "/logo.svg",
+        width: 512,
+        height: 512,
+        alt: "لوغو رقيم ريندر",
+      },
+    ],
+    locale: "ar_EG",
+    type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: "رقيم ريندر — صانع لقطات الشاشة البانورامية",
+    description: "صمم لقطات شاشتك لمتجر التطبيقات بأسلوب بانورامي متكامل مجاناً وبأعلى دقة دون تسجيل أو إعلانات.",
+    images: ["/logo.svg"],
+  },
+  icons: {
+    icon: "/logo.svg",
+    shortcut: "/logo.svg",
+    apple: "/logo.svg",
+  },
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${inter.variable} h-full`}>
-      <body className="min-h-full flex flex-col">
-        <Navbar />
+    <html lang="ar" dir="rtl" className={`${cairo.variable} h-full`}>
+      <body className="min-h-full flex flex-col font-sans">
         <main className="flex-1">{children}</main>
         <Footer />
       </body>
     </html>
-  )
-}
-
-function Navbar() {
-  return (
-    <header className="sticky top-0 z-50 border-b border-[#E2E8F0] bg-white/80 backdrop-blur-md">
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
-        <Link href="/" className="text-xl font-bold tracking-tight text-[#1B3A6B]">
-          RaqeemFrame
-        </Link>
-        <Link
-          href="/editor"
-          className="rounded-xl bg-[#1B3A6B] px-5 py-2.5 text-sm font-semibold text-white transition-all duration-200 hover:bg-[#2952A3]"
-        >
-          Start Free
-        </Link>
-      </div>
-    </header>
   )
 }
 
