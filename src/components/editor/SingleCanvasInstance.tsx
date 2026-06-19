@@ -171,7 +171,7 @@ export default function SingleCanvasInstance({
           </div>
         )}
 
-        <Stage ref={stageRef} width={310.5} height={672} scaleX={0.25} scaleY={0.25} style={{ touchAction: 'pan-x' }}>
+        <Stage ref={stageRef} width={310.5} height={672} scaleX={0.25} scaleY={0.25} preventDefault={false} style={{ touchAction: 'pan-x' }}>
           <Layer>
             <Rect 
               key={screen.backgroundColor}
