@@ -20,7 +20,6 @@ export default function Home() {
       <header className="fixed top-5 left-1/2 z-50 flex w-[90%] max-w-5xl -translate-x-1/2 items-center justify-between rounded-2xl border border-slate-100/80 bg-white/80 p-3.5 px-6 shadow-xl backdrop-blur-lg transition-all">
         <div className="flex items-center gap-2">
           <RaqeemLogo size={32} />
-          <span className="text-base font-extrabold tracking-tight text-neutral-950">رقيم ريندر</span>
         </div>
         <a
           href="https://github.com"

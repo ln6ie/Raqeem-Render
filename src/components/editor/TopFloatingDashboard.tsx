@@ -6,6 +6,7 @@ import { applyTheme } from '@/actions/projectState'
 import { PANORAMIC_THEMES } from '@/lib/templates'
 
 import { RaqeemLogo } from '@/components/ui/Logo'
+import Link from 'next/link'
 
 interface Props {
   project: PanoramicProjectState
@@ -16,11 +17,11 @@ interface Props {
 }
 
 const PRESET_GRADIENTS = [
-  'linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%)',
-  'linear-gradient(135deg, #f43f5e 0%, #fb7185 100%)',
-  'linear-gradient(135deg, #059669 0%, #10b981 100%)',
-  'linear-gradient(135deg, #d97706 0%, #f59e0b 100%)',
-  'linear-gradient(135deg, #1e293b 0%, #0f172a 100%)',
+  'linear-gradient(135deg, #0a1128 0%, #1c2541 100%)',
+  'linear-gradient(135deg, #1c2541 0%, #3a506b 100%)',
+  'linear-gradient(135deg, #007AFF 0%, #0056b3 100%)',
+  'linear-gradient(135deg, #0f4c81 0%, #1f3a52 100%)',
+  'linear-gradient(135deg, #0a1128 0%, #007AFF 100%)',
 ]
 
 // تحويل صيغة اللون إلى Hex
@@ -31,18 +32,6 @@ function colorToHex(color: string): string {
       return '#' + color[1] + color[1] + color[2] + color[2] + color[3] + color[3]
     }
     return color
-  }
-  if (color.startsWith('rgb')) {
-    const rgbVals = color.match(/\d+/g)
-    if (rgbVals && rgbVals.length >= 3) {
-      const r = parseInt(rgbVals[0], 10)
-      const g = parseInt(rgbVals[1], 10)
-      const b = parseInt(rgbVals[2], 10)
-      return '#' + [r, g, b].map(x => {
-        const hex = x.toString(16)
-        return hex.length === 1 ? '0' + hex : hex
-      }).join('')
-    }
   }
   return '#4f46e5'
 }
@@ -66,10 +55,9 @@ export default function TopFloatingDashboard({
       {/* اليمين: اللوجو والتصدير */}
       <div className="flex items-center justify-between gap-3 border-b border-slate-100/60 pb-2 md:border-b-0 md:pb-0 md:justify-start">
         <div className="flex items-center gap-2 md:border-l md:border-slate-200/80 md:pl-3">
-          <RaqeemLogo size={24} className="md:w-[28px] md:h-[28px]" />
-          <span className="text-xs font-extrabold tracking-tight text-slate-900 md:text-sm">
-            رقيم ريندر
-          </span>
+          <Link href="/" className="transition-transform hover:scale-105">
+            <RaqeemLogo size={28} />
+          </Link>
         </div>
         <button
           type="button"
