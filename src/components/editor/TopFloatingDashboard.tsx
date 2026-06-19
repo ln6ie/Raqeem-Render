@@ -70,7 +70,7 @@ export default function TopFloatingDashboard({
       </div>
 
       {/* شريط الأدوات بالتمرير الأفقي للأجهزة المحمولة */}
-      <div className="flex items-center gap-4 overflow-x-auto py-1 scrollbar-none md:overflow-visible md:py-0 md:gap-6">
+      <div className="flex items-center gap-4 overflow-x-auto overflow-y-hidden py-1 scrollbar-none md:overflow-visible md:py-0 md:gap-6 touch-pan-x">
         {/* اختيار القالب */}
         <div className="flex flex-shrink-0 items-center gap-1.5">
           <span className="text-[9px] font-bold text-slate-400 md:text-[10px]">المظهر</span>

@@ -39,7 +39,7 @@ export default function PanoramicCanvasWorkspace({
     <div
       ref={containerRef}
       onWheel={handleWheel}
-      className="flex w-full items-center justify-start overflow-x-auto gap-8 px-16 py-10 scroll-smooth select-none scrollbar-none"
+      className="flex w-full items-center justify-start overflow-x-auto gap-8 px-16 py-10 scroll-smooth select-none scrollbar-none touch-pan-x"
     >
       {project.screens.map((screen, index) => (
         <SingleCanvasInstance

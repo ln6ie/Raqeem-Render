@@ -76,18 +76,15 @@ function Footer() {
         {/* الوسط: مميزات المنصة كقائمة أفقية */}
         <div className="flex flex-wrap justify-center items-center gap-x-4 gap-y-1 text-xs font-semibold text-slate-600">
           <span>بدون تسجيل</span>
-          <span className="text-slate-300">•</span>
           <span>مجاني بالكامل</span>
-          <span className="text-slate-300">•</span>
           <span>بدون إعلانات</span>
-          <span className="text-slate-300">•</span>
         </div>
 
         {/* اليسار: حقوق الملكية ومعلومات المستخدمين */}
         <div className="flex flex-col items-center md:items-end gap-2 text-center md:text-left">
           <span className="text-[10px] text-slate-400">جميع الحقوق محفوظة © {new Date().getFullYear()}</span>
-          <div className="inline-flex items-center rounded-full bg-blue-50 px-3 py-1 text-[10px] font-bold text-[#007AFF] shadow-sm whitespace-nowrap">
-            <VisitorCounter className="text-[#007AFF]" />
+          <div className="flex items-center rounded-full bg-[#007AFF] px-2 sm:px-3 py-0.5 sm:py-1 text-[8px] sm:text-[9px] font-bold text-white shadow-sm whitespace-nowrap">
+            <VisitorCounter />
           </div>
         </div>
 

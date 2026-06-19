@@ -158,7 +158,7 @@ export default function SingleCanvasInstance({
     >
       <input ref={fileRef} type="file" accept="image/*" className="hidden" onChange={handleFileChange} />
       
-      <div className="relative overflow-hidden rounded-xl bg-slate-50" style={{ width: 310.5, height: 672 }}>
+      <div className="relative overflow-hidden rounded-xl bg-slate-50 touch-pan-x" style={{ width: 310.5, height: 672, touchAction: 'pan-x' }}>
         {loading && (
           <div className="absolute inset-0 z-10 flex items-center justify-center bg-white/60 backdrop-blur-sm">
             <div className="h-8 w-8 animate-spin rounded-full border-4 border-blue-500 border-t-transparent" />
@@ -171,7 +171,7 @@ export default function SingleCanvasInstance({
           </div>
         )}
 
-        <Stage ref={stageRef} width={310.5} height={672} scaleX={0.25} scaleY={0.25}>
+        <Stage ref={stageRef} width={310.5} height={672} scaleX={0.25} scaleY={0.25} style={{ touchAction: 'pan-x' }}>
           <Layer>
             <Rect 
               key={screen.backgroundColor}
