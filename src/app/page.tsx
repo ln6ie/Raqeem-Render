@@ -10,14 +10,17 @@ export default function Home() {
       {/* الهيدر العلوي كبطاقة عائمة بحواف دائرية كاملة */}
       <header className="fixed top-5 left-1/2 z-50 flex w-[90%] max-w-5xl -translate-x-1/2 items-center justify-between rounded-full border border-slate-100/80 bg-white/80 p-2.5 px-6 shadow-xl backdrop-blur-lg transition-all">
         <div className="flex items-center gap-3">
-          <RaqeemLogo size={32} />
+          <div className="flex items-center gap-2">
+            <RaqeemLogo size={32} />
+            <span className="text-sm font-black tracking-tight text-slate-900 font-sans">Raqeem</span>
+          </div>
           {/* شارة المستخدمين باللون الأزرق الداكن الملكي 100% والنص باللون الأبيض */}
           <div className="flex items-center rounded-full bg-[#007AFF] px-3.5 py-1 text-[9px] font-bold text-white shadow-sm">
             <VisitorCounter />
           </div>
         </div>
         <a
-          href="https://github.com"
+          href="https://github.com/ln6ie/RaqeemFrame"
           target="_blank"
           rel="noopener noreferrer"
           className="flex items-center gap-1.5 rounded-xl border border-neutral-200 bg-white px-4 py-1.5 text-xs font-semibold text-neutral-700 transition-all hover:bg-neutral-50 shadow-sm"
@@ -47,7 +50,7 @@ export default function Home() {
             ابدأ الآن
           </Link>
           <a
-            href="https://github.com"
+            href="https://github.com/ln6ie/RaqeemFrame"
             target="_blank"
             rel="noopener noreferrer"
             className="rounded-full bg-[#007AFF] px-8 py-3 text-sm font-semibold text-white transition-all hover:bg-[#007AFF]/35 hover:scale-[1.02] active:scale-[0.98]"

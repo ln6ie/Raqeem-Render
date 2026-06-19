@@ -1,36 +1,70 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Raqeem Render (رقيم ريندر)
 
-## Getting Started
+منصة مجانية مفتوحة المصدر لتصميم لقطات شاشتك (Screenshots) لمتجر التطبيقات بأسلوب بانورامي متصل متناسق وجذاب لتعزيز ظهور تطبيقك ورفع معدل التحميلات.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## المميزات الرئيسية
+- هيكل بانورامي متصل: صمم 5 واجهات متصلة كلوحة واحدة تنساب الحركات والتدرجات اللونية بين فريماتها بسلاسة.
+- خيارات مظهر حديثة (Asymmetric Themes): قوالب نيون وشارات مدمجة وجذابة جاهزة بلمسة واحدة.
+- تخصيص لوني رباعي الاتجاهات: تعديل مباشر لتدرجات الخلفية المتعددة لكل كارت منفرد.
+- تحرير مباشر للمحتوى: عدّل العناوين، الأوصاف، والبادج (الشارات) بمجرد النقر عليها مباشرة على الكانفاس.
+- تصدير عالي الدقة: تصدير لقطات الشاشة بدقة 1320x2868 بكسل متوافقة تماماً مع معايير متجر التطبيقات.
+- تصدير ثابت (Netlify Export): الكود مهيأ ومحسن للتصدير الثابت 100% بدون تعقيدات السيرفرات والشبكات.
+
+---
+
+## شجرة هيكل ملفات المشروع
+
+```text
+RaqeemFrame/
+├── public/                 # الملفات الثابتة والوسائط العامة
+│   ├── logo.svg            # شعار رقيم ريندر الرسمي المعتمد
+│   └── themes/             # الصور المصغرة للقوالب المسبقة
+├── src/
+│   ├── actions/            # العمليات ووظائف المنطق الأساسي
+│   │   ├── exportCanvas.ts # معالجة تصدير الكانفاس (فردي أو جماعي)
+│   │   ├── projectState.ts # إدارة حالة المشروع وتغيير الثيمات
+│   │   └── uploadHelpers.ts# مساعدات رفع لقطات الشاشة
+│   ├── app/                # صفحات وهيكلية Next.js
+│   │   ├── api/            # مسارات الواجهات البرمجية (إذا لزم لاحقاً)
+│   │   ├── editor/         # صفحة المحرر والتعديل الرئيسي
+│   │   ├── globals.css     # التنسيق العام وتخصيص الفونت
+│   │   ├── layout.tsx      # الإطار العام والفوتر المتجاوب للموقع
+│   │   └── page.tsx        # الصفحة التعريفية (Apple-Style) مع عداد الزوار
+│   ├── components/         # المكونات التفاعلية للواجهة
+│   │   ├── editor/         # مكونات الكانفاس وشريط التحكم العائم
+│   │   └── ui/             # مكونات الواجهة الأساسية (لوغو، عداد زوار)
+│   ├── lib/
+│   │   └── templates.ts    # تعريف القوالب البانورامية (مثل Neon Badges)
+│   ├── styles/
+│   │   └── tokens.css      # ثوابت وتوكينات الألوان والتصميم
+│   └── types/
+│       └── index.ts        # تعريفات وأنواع TypeScript للمشروع
+├── next.config.ts          # إعدادات Next.js (وضع output: export)
+├── package.json            # الاعتماديات وسكربتات التشغيل
+└── tsconfig.json           # إعدادات مترجم TypeScript
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## التشغيل المحلي
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+تأكد من استخدام pnpm كمدير حزم أساسي:
 
-## Learn More
+1. تثبيت الاعتماديات:
+```bash
+pnpm install
+```
 
-To learn more about Next.js, take a look at the following resources:
+2. تشغيل خادم التطوير المحلي:
+```bash
+pnpm dev
+```
+افتح http://localhost:3000 في متصفحك.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+3. التصدير الثابت للإنتاج:
+```bash
+pnpm build
+```
+ستجد الملفات الثابتة جاهزة للرفع المباشر إلى Netlify داخل مجلد out.

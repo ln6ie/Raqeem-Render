@@ -9,21 +9,21 @@ const cairo = Cairo({
 })
 
 export const metadata: Metadata = {
-  title: "رقيم ريندر — صانع لقطات الشاشة البانورامية لتطبيقات الجوال",
+  title: "Raqeem Render — صانع لقطات الشاشة البانورامية لتطبيقات الجوال",
   description: "صمم لقطات شاشتك لمتجر التطبيقات بأسلوب بانورامي متكامل مجاناً وبأعلى دقة دون تسجيل أو إعلانات.",
   keywords: ["تصميم لقطات شاشة", "App Store screenshots", "لقطات شاشة بانورامية", "Raqeem Render", "رقيم ريندر", "تصدير فريمات"],
-  authors: [{ name: "رقيم ريندر" }],
+  authors: [{ name: "Raqeem Render" }],
   openGraph: {
-    title: "رقيم ريندر — صانع لقطات الشاشة البانورامية",
+    title: "Raqeem Render — صانع لقطات الشاشة البانورامية",
     description: "صمم لقطات شاشتك لمتجر التطبيقات بأسلوب بانورامي متكامل مجاناً وبأعلى دقة دون تسجيل أو إعلانات.",
-    url: "https://raqeem-render.vercel.app",
-    siteName: "رقيم ريندر",
+    url: "https://raqeemframe.netlify.app/",
+    siteName: "Raqeem Render",
     images: [
       {
         url: "/logo.svg",
         width: 512,
         height: 512,
-        alt: "لوغو رقيم ريندر",
+        alt: "لوغو Raqeem Render",
       },
     ],
     locale: "ar_EG",
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary",
-    title: "رقيم ريندر — صانع لقطات الشاشة البانورامية",
+    title: "Raqeem Render — صانع لقطات الشاشة البانورامية",
     description: "صمم لقطات شاشتك لمتجر التطبيقات بأسلوب بانورامي متكامل مجاناً وبأعلى دقة دون تسجيل أو إعلانات.",
     images: ["/logo.svg"],
   },
@@ -61,14 +61,14 @@ function Footer() {
   return (
     <footer className="border-t border-slate-100 bg-[#F5F5F7] py-12 text-slate-500">
       <div className="mx-auto max-w-5xl px-6 flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
-        
+
         {/* اليمين: معلومات المشروع واللوغو */}
         <div className="flex items-center gap-3">
           <Link href="/" className="transition-transform hover:scale-105">
             <RaqeemLogo size={32} />
           </Link>
           <div className="flex flex-col text-right">
-            <span className="text-sm font-bold text-slate-800">رقيم ريندر</span>
+            <span className="text-sm font-bold text-slate-800">Raqeem Render</span>
             <span className="text-[10px] text-slate-400">منصة تصدير لقطات الشاشة البانورامية المفتوحة</span>
           </div>
         </div>
@@ -88,10 +88,10 @@ function Footer() {
         <div className="flex flex-col text-left md:text-right gap-1">
           <span className="text-[10px] text-slate-400">جميع الحقوق محفوظة © {new Date().getFullYear()}</span>
           <span className="text-[9px] font-bold text-[#007AFF]">
-            <VisitorCounter className="text-[#007AFF]" /> (زائر اليوم)
+            <VisitorCounter className="text-[#007AFF]" /> (العدد الكلي للزيارات)
           </span>
         </div>
-        
+
       </div>
     </footer>
   )
