@@ -12,7 +12,7 @@ export default function Home() {
         <div className="flex items-center gap-3">
           <div className="flex items-center gap-2">
             <RaqeemLogo size={32} />
-            <span className="text-sm font-black tracking-tight text-slate-900 font-sans">Raqeem</span>
+            <span className="text-sm font-black tracking-tight text-slate-900 font-sans">Raqeem Render</span>
           </div>
           {/* شارة المستخدمين باللون الأزرق الداكن الملكي 100% والنص باللون الأبيض */}
           <div className="flex items-center rounded-full bg-[#007AFF] px-3.5 py-1 text-[9px] font-bold text-white shadow-sm">

@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Raqeem Render — صانع لقطات الشاشة البانورامية",
     description: "صمم لقطات شاشتك لمتجر التطبيقات بأسلوب بانورامي متكامل مجاناً وبأعلى دقة دون تسجيل أو إعلانات.",
-    url: "https://raqeemframe.netlify.app/",
+    url: "https://raqeemrender.netlify.app/",
     siteName: "Raqeem Render",
     images: [
       {
