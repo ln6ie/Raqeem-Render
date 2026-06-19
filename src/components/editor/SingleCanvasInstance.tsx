@@ -77,7 +77,7 @@ export default function SingleCanvasInstance({
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth < 768) {
-        setScale(0.15)
+        setScale(0.22)
       } else {
         setScale(0.25)
       }
@@ -172,7 +172,7 @@ export default function SingleCanvasInstance({
     >
       <input ref={fileRef} type="file" accept="image/*" className="hidden" onChange={handleFileChange} />
       
-      <div className="relative overflow-hidden rounded-xl bg-slate-50 touch-pan-x" style={{ width: 310.5, height: 672, touchAction: 'pan-x' }}>
+      <div className="relative overflow-hidden rounded-xl bg-slate-50 touch-pan-x" style={{ width: 1242 * scale, height: 2688 * scale, touchAction: 'pan-x' }}>
         {loading && (
           <div className="absolute inset-0 z-10 flex items-center justify-center bg-white/60 backdrop-blur-sm">
             <div className="h-8 w-8 animate-spin rounded-full border-4 border-blue-500 border-t-transparent" />
@@ -185,7 +185,7 @@ export default function SingleCanvasInstance({
           </div>
         )}
 
-        <Stage ref={stageRef} width={310.5} height={672} scaleX={0.25} scaleY={0.25} preventDefault={false} style={{ touchAction: 'pan-x' }}>
+        <Stage ref={stageRef} width={1242 * scale} height={2688 * scale} scaleX={scale} scaleY={scale} preventDefault={false} style={{ touchAction: 'pan-x' }}>
           <Layer>
             <Rect 
               key={screen.backgroundColor}
@@ -290,17 +290,17 @@ export default function SingleCanvasInstance({
         </Stage>
 
         {editingField === 'badge' && (
-          <InlineTextOverlay value={badge || ''} top={badgeY * 0.25 + 40} left={80 * 0.25} width={1082 * 0.25} fontSize={14}
+          <InlineTextOverlay value={badge || ''} top={badgeY * scale + scale * 160} left={80 * scale} width={1082 * scale} fontSize={14}
             onChange={(val) => onUpdateText({ config: { ...(screen.config || { layout: 'text-top' }), badge: val } })} onClose={() => setEditingField(null)} />
         )}
 
         {editingField === 'title' && (
-          <InlineTextOverlay value={screen.title} top={titleY * 0.25} left={80 * 0.25} width={1082 * 0.25} fontSize={20}
+          <InlineTextOverlay value={screen.title} top={titleY * scale} left={80 * scale} width={1082 * scale} fontSize={20}
             onChange={(val) => onUpdateText({ title: val })} onClose={() => setEditingField(null)} />
         )}
 
         {editingField === 'subtitle' && (
-          <InlineTextOverlay value={screen.subtitle} top={subtitleY * 0.25} left={80 * 0.25} width={1082 * 0.25} fontSize={14}
+          <InlineTextOverlay value={screen.subtitle} top={subtitleY * scale} left={80 * scale} width={1082 * scale} fontSize={14}
             onChange={(val) => onUpdateText({ subtitle: val })} onClose={() => setEditingField(null)} />
         )}
       </div>
