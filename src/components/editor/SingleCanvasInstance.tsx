@@ -71,7 +71,7 @@ export default function SingleCanvasInstance({
   const [screenshotImg, setScreenshotImg] = useState<HTMLImageElement | null>(null)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(false)
-  const [editingField, setEditingField] = useState<'title' | 'subtitle' | null>(null)
+  const [editingField, setEditingField] = useState<'title' | 'subtitle' | 'badge' | null>(null)
 
   useEffect(() => {
     if (screen.screenshotUrl) {
