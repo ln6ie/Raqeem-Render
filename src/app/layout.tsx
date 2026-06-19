@@ -88,7 +88,7 @@ function Footer() {
         <div className="flex flex-col text-left md:text-right gap-1">
           <span className="text-[10px] text-slate-400">جميع الحقوق محفوظة © {new Date().getFullYear()}</span>
           <span className="text-[9px] font-bold text-[#007AFF]">
-            <VisitorCounter /> (زائر اليوم)
+            <VisitorCounter className="text-[#007AFF]" /> (زائر اليوم)
           </span>
         </div>
         

@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react'
 
-export function VisitorCounter() {
+export function VisitorCounter({ className = 'text-white' }: { className?: string }) {
   const [visitorCount, setVisitorCount] = useState<number>(0)
 
   useEffect(() => {
@@ -22,7 +22,7 @@ export function VisitorCounter() {
   }, [])
 
   return (
-    <span className="font-bold text-white">
+    <span className={`font-bold ${className}`}>
       عدد الزوار: {visitorCount}
     </span>
   )
