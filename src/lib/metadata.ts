@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 
 export const siteMetadata: Metadata = {
+  metadataBase: new URL("https://raqeemrender.netlify.app"),
   title: "Raqeem Render — صانع لقطات الشاشة البانورامية لتطبيقات الجوال",
   description: "صمم لقطات شاشتك لمتجر التطبيقات بأسلوب بانورامي متكامل مجاناً وبأعلى دقة دون تسجيل أو إعلانات.",
   keywords: ["تصميم لقطات شاشة", "App Store screenshots", "لقطات شاشة بانورامية", "Raqeem Render", "رقيم ريندر", "تصدير فريمات"],
