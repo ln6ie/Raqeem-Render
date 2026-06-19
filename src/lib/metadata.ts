@@ -12,7 +12,7 @@ export const siteMetadata: Metadata = {
     siteName: "Raqeem Render",
     images: [
       {
-        url: "/logo.svg",
+        url: "/logo.png",
         width: 512,
         height: 512,
         alt: "لوغو Raqeem Render",
@@ -25,11 +25,11 @@ export const siteMetadata: Metadata = {
     card: "summary",
     title: "Raqeem Render — صانع لقطات الشاشة البانورامية",
     description: "صمم لقطات شاشتك لمتجر التطبيقات بأسلوب بانورامي متكامل مجاناً وبأعلى دقة دون تسجيل أو إعلانات.",
-    images: ["/logo.svg"],
+    images: ["/logo.png"],
   },
   icons: {
-    icon: "/logo.svg",
-    shortcut: "/logo.svg",
-    apple: "/logo.svg",
+    icon: "/logo.png",
+    shortcut: "/logo.png",
+    apple: "/logo.png",
   },
 }
