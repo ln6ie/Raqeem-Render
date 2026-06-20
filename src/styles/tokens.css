@@ -1,0 +1,19 @@
+/* ملف رموز التصميم لتطبيق رقيم */
+:root {
+  --color-titanium-start: #8e9eb5;
+  --color-titanium-end: #707e94;
+  --color-midnight-black: #1c1c1e;
+  --color-ceramic-white: #f2f2f7;
+  
+  --bg-glass-white: rgba(255, 255, 255, 0.8);
+  --border-glass-white: rgba(226, 232, 240, 0.6);
+  --shadow-premium: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  
+  --font-display: "SF Pro Display", "Inter", sans-serif;
+  
+  --canvas-width: 1242px;
+  --canvas-height: 2688px;
+  --preview-width: 310.5px;
+  --preview-height: 672px;
+  --preview-scale: 0.25;
+}

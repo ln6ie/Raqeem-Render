@@ -1,0 +1,20 @@
+@import '../styles/tokens.css';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background: #F8FAFC;
+  color: #0F172A;
+  font-family: var(--font-cairo), "Cairo", ui-sans-serif, system-ui, sans-serif;
+}
+
+/* إخفاء شريط التمرير بالكامل */
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-none {
+  -ms-overflow-style: none;  
+  scrollbar-width: none;  
+}
+
