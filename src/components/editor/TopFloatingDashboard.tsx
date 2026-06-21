@@ -5,16 +5,18 @@ import { Download, Eye, EyeOff, Palette, Layers } from 'lucide-react'
 import { applyTheme } from '@/actions/projectState'
 import { colorToHex, parseGradientColors } from '@/actions/canvasHelpers'
 import { PANORAMIC_THEMES } from '@/lib/templates'
+import { FRAME_COLORS, FRAME_COLOR_NAMES } from '@/lib/frameConfig'
 
 import { RaqeemLogo } from '@/components/ui/Logo'
 import Link from 'next/link'
 
 const PRESET_GRADIENTS = [
-  'linear-gradient(135deg, #0a1128 0%, #1c2541 100%)',
-  'linear-gradient(135deg, #1c2541 0%, #3a506b 100%)',
-  'linear-gradient(135deg, #007AFF 0%, #0056b3 100%)',
-  'linear-gradient(135deg, #0f4c81 0%, #1f3a52 100%)',
-  'linear-gradient(135deg, #0a1128 0%, #007AFF 100%)',
+  'linear-gradient(135deg, #E3F2FD 0%, #BBDEFB 100%)',
+  'linear-gradient(135deg, #E8F5E9 0%, #C8E6C9 100%)',
+  'linear-gradient(135deg, #FCE4EC 0%, #F8BBD0 100%)',
+  'linear-gradient(135deg, #F3E5F5 0%, #E1BEE7 100%)',
+  'linear-gradient(135deg, #FFF3E0 0%, #FFE0B2 100%)',
+  'linear-gradient(135deg, #E0F2F1 0%, #B2DFDB 100%)',
 ]
 
 // لوحة تحكم علوية بتنسيق مرتب وراقي جدا
@@ -150,20 +152,18 @@ export default function TopFloatingDashboard({
 
           {/* لون الإطار */}
           <div className="flex items-center border-r border-slate-100 pr-2 md:pr-3">
-            <div className="flex gap-0.5 bg-slate-100/80 p-0.5 rounded-full md:gap-1">
-              {(['titanium', 'black', 'white'] as const).map((color) => (
+            <div className="flex items-center gap-1">
+              {Object.entries(FRAME_COLORS).map(([key, hex]) => (
                 <button
-                  key={color}
+                  key={key}
                   type="button"
-                  onClick={() => onChange({ ...project, globalFrameColor: color })}
-                  className={`rounded-full px-2.5 py-0.5 text-[8px] font-semibold transition-all md:px-3 md:text-[9px] ${
-                    project.globalFrameColor === color
-                      ? 'bg-[#007AFF] text-white shadow-sm'
-                      : 'text-slate-900 hover:text-slate-950 font-semibold'
+                  onClick={() => onChange({ ...project, globalFrameColor: key })}
+                  className={`h-3.5 w-3.5 rounded-full border transition-all md:h-4.5 md:w-4.5 ${
+                    project.globalFrameColor === key ? 'ring-2 ring-slate-800 scale-110' : 'border-slate-200 hover:scale-105'
                   }`}
-                >
-                  {color === 'titanium' ? 'تيتانيوم' : color === 'black' ? 'أسود' : 'أبيض'}
-                </button>
+                  style={{ backgroundColor: hex }}
+                  title={FRAME_COLOR_NAMES[key]}
+                />
               ))}
             </div>
           </div>

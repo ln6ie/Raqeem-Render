@@ -16,11 +16,11 @@ export default function SingleCanvasInstance({
   const [screenshotImg, setScreenshotImg] = useState<HTMLImageElement | null>(null)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(false)
-  const [editingField, setEditingField] = useState<'title' | 'subtitle' | 'badge' | null>(null)
-  const [scale, setScale] = useState(0.17)
+  const [editingField, setEditingField] = useState<'title' | 'subtitle' | null>(null)
+  const [scale, setScale] = useState(0.25)
 
   useEffect(() => {
-    const handleResize = () => setScale(window.innerWidth < 768 ? 0.15 : 0.17)
+    const handleResize = () => setScale(window.innerWidth < 768 ? 0.15 : 0.25)
     handleResize()
     window.addEventListener('resize', handleResize)
     return () => window.removeEventListener('resize', handleResize)
@@ -118,12 +118,6 @@ export default function SingleCanvasInstance({
           stageRef={stageRef}
         />
 
-        {editingField === 'badge' && (
-          <InlineTextOverlay value={v.badge || ''}
-            top={v.badgeY * scale + scale * 160} left={80 * scale} width={1082 * scale} fontSize={14}
-            onChange={(val) => onUpdateText({ config: { ...(screen.config || { layout: 'text-top' }), badge: val } })}
-            onClose={() => setEditingField(null)} />
-        )}
         {editingField === 'title' && (
           <InlineTextOverlay value={screen.title} top={v.titleY * scale}
             left={80 * scale} width={1082 * scale} fontSize={20}

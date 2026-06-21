@@ -51,9 +51,6 @@ export default function Home() {
               <div className="absolute inset-0 opacity-[0.03]" style={{ background: s.bg }} />
               <div className="relative flex h-full flex-col justify-between p-6">
                 <div className="space-y-3">
-                  <span className="inline-block rounded-full bg-[#F5F5F7] px-3 py-1 text-xs font-medium text-[#86868b]">
-                    {s.badge}
-                  </span>
                   <h3 className="text-base font-semibold text-[#1d1d1f]">{s.title}</h3>
                   <p className="text-sm text-[#86868b] leading-relaxed">{s.subtitle}</p>
                 </div>
@@ -89,9 +86,9 @@ export default function Home() {
 }
 
 const mockScreens = [
-  { bg: '#1d1d1f', badge: 'الواجهة الذكية', title: 'الواجهة الأولى', subtitle: 'هاتف مدمج من الأسفل' },
-  { bg: '#86868b', badge: 'سرعة وكفاءة', title: 'تحليل البيانات', subtitle: 'إحصائيات متكاملة فوراً' },
-  { bg: '#1d1d1f', badge: 'تصميم متناسق', title: 'الأمان المالي', subtitle: 'تشفير كامل لبياناتك' },
-  { bg: '#86868b', badge: 'تحديث فوري', title: 'أكاديمية رقيم', subtitle: 'دروس تفاعلية مبسطة' },
-  { bg: '#1d1d1f', badge: 'تصدير سهل', title: 'تداول ذكي', subtitle: 'أدوات تحليلية مبتكرة' },
+  { bg: '#1d1d1f', title: 'الواجهة الأولى', subtitle: 'هاتف مدمج من الأسفل' },
+  { bg: '#86868b', title: 'تحليل البيانات', subtitle: 'إحصائيات متكاملة فوراً' },
+  { bg: '#1d1d1f', title: 'الأمان المالي', subtitle: 'تشفير كامل لبياناتك' },
+  { bg: '#86868b', title: 'أكاديمية رقيم', subtitle: 'دروس تفاعلية مبسطة' },
+  { bg: '#1d1d1f', title: 'تداول ذكي', subtitle: 'أدوات تحليلية مبتكرة' },
 ]

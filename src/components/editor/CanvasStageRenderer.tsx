@@ -22,12 +22,6 @@ export default function CanvasStageRenderer({
           fillLinearGradientEndPoint={{ x: 0, y: 2688 }}
           fillLinearGradientColorStops={v.colorStops}
         />
-        {v.decoration?.type === 'path' && (
-          <Path x={v.decoration.x} y={v.decoration.y} data={v.decoration.data} fill={v.decoration.fill} />
-        )}
-        {v.decoration?.type === 'circle' && (
-          <Circle x={v.decoration.x} y={v.decoration.y} radius={Number(v.decoration.data)} fill={v.decoration.fill} />
-        )}
       </Layer>
 
       {!v.isHideDevice && (
@@ -67,15 +61,6 @@ export default function CanvasStageRenderer({
       )}
 
       <Layer>
-        {v.badge && (
-          <>
-            <Rect x={v.titleX} y={v.badgeY} width={v.badge.length * 32 + 60} height={90}
-              fill={v.badgeBg} cornerRadius={45} onClick={() => onEditField('badge')} />
-            <Text text={v.badge} x={v.titleX} y={v.badgeY + 18} width={v.badge.length * 32 + 60}
-              fontSize={40} fill={v.badgeColor} fontStyle="bold" fontFamily="Cairo" align="center"
-              onClick={() => onEditField('badge')} />
-          </>
-        )}
         <Text text={screen.title} x={v.titleX} y={v.titleY} width={1082}
               fontSize={90} fill={v.activeTitleColor} fontStyle="bold" fontFamily="Cairo"
               align={v.titleAlign} onClick={() => onEditField('title')} />

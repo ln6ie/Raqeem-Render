@@ -30,7 +30,7 @@ export interface AppScreen {
 }
 
 export interface PanoramicProjectState {
-  globalFrameColor: 'black' | 'white' | 'titanium';
+  globalFrameColor: string;
   showDeviceFrame: boolean;
   globalDeviceType: 'iphone-pro' | 'iphone-classic' | 'android-ultra' | 'android-punch';
   globalTitleColor: string;
@@ -105,7 +105,7 @@ export interface CanvasStageRendererProps extends EditorScreenProps {
   screenshotImg: HTMLImageElement | null
   derived: ScreenDerivedValues
   onUploadClick: () => void
-  onEditField: (field: 'title' | 'subtitle' | 'badge') => void
+  onEditField: (field: 'title' | 'subtitle' | null) => void
 }
 
 export interface GradientColorPanelProps {
