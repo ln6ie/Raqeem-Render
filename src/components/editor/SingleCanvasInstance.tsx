@@ -109,10 +109,14 @@ export default function SingleCanvasInstance({
         )}
 
         <CanvasStageRenderer
-          screen={screen} project={project} scale={scale}
-          screenshotImg={screenshotImg} derived={v}
+          screen={screen} 
+          project={project} 
+          scale={scale}
+          screenshotImg={screenshotImg} 
+          derived={v}
           onUploadClick={() => {}}
           onEditField={setEditingField}
+          stageRef={stageRef} 
         />
 
         {editingField === 'badge' && (
