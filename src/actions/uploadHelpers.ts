@@ -1,4 +1,4 @@
-const MAX_FILE_SIZE = 15 * 1024 * 1024 // رفعنا الحد إلى 15 ميجا ليتوافق مع كاميرات الهواتف
+const MAX_FILE_SIZE = 25 * 1024 * 1024 
 const ALLOWED_TYPES = ['image/png', 'image/jpeg', 'image/webp']
 
 export function validateFile(file: File): string | null {
@@ -6,12 +6,12 @@ export function validateFile(file: File): string | null {
     return 'Please upload a PNG, JPEG, or WebP image.'
   }
   if (file.size > MAX_FILE_SIZE) {
-    return 'File is too large. Maximum size is 15MB.'
+    return 'File is too large. Maximum size is 25MB.'
   }
   return null
 }
 
-// دالة تقوم بضغط الصورة وتقليص أبعادها فوراً لتجنب انهيار المتصفح في الهاتف
+// دالة محسنة للاحتفاظ بأعلى دقة ومعالجة الصورة بصيغة PNG غير مضغوطة
 export function readFileAsDataURL(file: File): Promise<string> {
   return new Promise((resolve, reject) => {
     const reader = new FileReader()
@@ -19,25 +19,28 @@ export function readFileAsDataURL(file: File): Promise<string> {
       const img = new window.Image()
       img.onload = () => {
         const canvas = document.createElement('canvas')
-        const MAX_WIDTH = 1242 // العرض المثالي لشاشات الآيفون في القوالب
-        let width = img.width
-        let height = img.height
-
-        // تقليص الأبعاد إذا كانت أكبر من المطلوب مع الحفاظ على التناسق
-        if (width > MAX_WIDTH) {
-          height *= MAX_WIDTH / width
-          width = MAX_WIDTH
+        
+        // الأبعاد القياسية 
+        const TARGET_WIDTH = 1320
+        const TARGET_HEIGHT = 2868
+        
+        canvas.width = TARGET_WIDTH
+        canvas.height = TARGET_HEIGHT
+        
+        const ctx = canvas.getContext('2d')
+        if (ctx) {
+          // تفعيل فلاتر تنعيم وتحسين جودة الصورة لمنع تشوه النصوص (Anti-aliasing)
+          ctx.imageSmoothingEnabled = true
+          ctx.imageSmoothingQuality = 'high'
+          
+          // رسم الصورة لتمتد وتغطي الأبعاد القياسية بالكامل وبأعلى دقة
+          ctx.drawImage(img, 0, 0, TARGET_WIDTH, TARGET_HEIGHT)
         }
         
-        canvas.width = width
-        canvas.height = height
-        const ctx = canvas.getContext('2d')
-        ctx?.drawImage(img, 0, 0, width, height)
-        
-        // تحويل الصورة لـ JPEG مع ضغط 90% لتقليل الحجم بشكل دراماتيكي وتسريع الـ Konva
-        resolve(canvas.toDataURL('image/jpeg', 0.9))
+        // التصدير بصيغة image/png لمنع أي ضغط أو تدمير للجودة
+        resolve(canvas.toDataURL('image/png'))
       }
-      img.onerror = () => reject(new Error('Failed to load image for resizing'))
+      img.onerror = () => reject(new Error('Failed to load image for ultra-res processing'))
       if (event.target?.result) {
         img.src = event.target.result as string
       }
