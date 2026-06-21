@@ -26,14 +26,17 @@ export default function SingleCanvasInstance({
     return () => window.removeEventListener('resize', handleResize)
   }, [])
 
-  useEffect(() => {
+useEffect(() => {
     if (!screen.screenshotUrl) {
       setScreenshotImg(null); setLoading(false); setError(false)
       return
     }
     setLoading(true); setError(false)
     const img = new window.Image()
-    img.crossOrigin = 'anonymous'
+        if (screen.screenshotUrl.startsWith('http')) {
+      img.crossOrigin = 'anonymous'
+    }
+    
     img.src = screen.screenshotUrl
     img.onload = () => { setScreenshotImg(img); setLoading(false) }
     img.onerror = () => { setScreenshotImg(null); setLoading(false); setError(true) }
