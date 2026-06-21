@@ -17,10 +17,10 @@ export default function SingleCanvasInstance({
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(false)
   const [editingField, setEditingField] = useState<'title' | 'subtitle' | 'badge' | null>(null)
-  const [scale, setScale] = useState(0.25)
+  const [scale, setScale] = useState(0.17)
 
   useEffect(() => {
-    const handleResize = () => setScale(window.innerWidth < 768 ? 0.22 : 0.25)
+    const handleResize = () => setScale(window.innerWidth < 768 ? 0.15 : 0.17)
     handleResize()
     window.addEventListener('resize', handleResize)
     return () => window.removeEventListener('resize', handleResize)
