@@ -4,11 +4,17 @@ import { Stage, Layer, Rect, Circle, Text, Image as KonvaImage, Path } from 'rea
 import type { CanvasStageRendererProps } from '@/types'
 
 export default function CanvasStageRenderer({
-  screen, project, scale, screenshotImg, derived: v, onUploadClick, onEditField,
-}: CanvasStageRendererProps) {
+  screen, project, scale, screenshotImg, derived: v, onUploadClick, onEditField, stageRef // <=== 1. أضفنا استلام المرجع هنا
+}: CanvasStageRendererProps & { stageRef: React.RefObject<any> }) {
   return (
-    <Stage width={1242 * scale} height={2688 * scale} scaleX={scale} scaleY={scale}
-      preventDefault={false} style={{ touchAction: 'pan-x' }}
+    <Stage 
+      ref={stageRef} // <=== 2. قمنا بربط المرجع هنا لكي يراه نظام التصدير
+      width={1242 * scale} 
+      height={2688 * scale} 
+      scaleX={scale} 
+      scaleY={scale}
+      preventDefault={false} 
+      style={{ touchAction: 'pan-x' }}
     >
       <Layer listening={false}>
         <Rect x={0} y={0} width={1242} height={2688}
